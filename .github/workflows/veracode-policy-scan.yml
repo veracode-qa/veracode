@@ -89,7 +89,7 @@ jobs:
           use_upgraded_version: true
 
       - name: Checkout repository
-        uses: actions/checkout@v3 
+        uses: actions/checkout@v4
       - name: Veracode Policy Results
         id: prepare-results
         if: always()
@@ -119,7 +119,7 @@ jobs:
           path: /tmp
 
       - name: Checkout repository
-        uses: actions/checkout@v3 
+        uses: actions/checkout@v4
       - name: Convert policy scan output to SARIF format for java language
         if: ${{ inputs.language == 'Java' }}
         uses: ./actions/veracode-pipeline-scan-results-to-sarif
@@ -136,7 +136,7 @@ jobs:
           source-base-path-2: 'WEB-INF:src/main/webapp/WEB-INF'
 
       - name: Checkout repository
-        uses: actions/checkout@v3  # Make sure repo files are available    
+        uses: actions/checkout@v4  # Make sure repo files are available    
       - name: Convert policy scan output to SARIF format for non java language
         if: ${{ inputs.language != 'Java' }}
         uses: ./actions/veracode-pipeline-scan-results-to-sarif
@@ -163,7 +163,7 @@ jobs:
           path: /tmp
 
       - name: Checkout repository
-        uses: actions/checkout@v3  # Make sure repo files are available    
+        uses: actions/checkout@v4  # Make sure repo files are available    
       - name: Create flaws as issues for java language
         if: ${{ inputs.language == 'Java' }}
         uses: ./actions/veracode-flaws-to-issues
@@ -177,7 +177,7 @@ jobs:
           source_base_path_2: 'WEB-INF:src/main/webapp/WEB-INF'
 
       - name: Checkout repository
-        uses: actions/checkout@v3  # Make sure repo files are available    
+        uses: actions/checkout@v4  # Make sure repo files are available    
       - name: Create flaws as issues for non java language
         if: ${{ inputs.language != 'Java' }}
         uses: ./actions/veracode-flaws-to-issues

@@ -35,7 +35,7 @@ jobs:
     name: Remove Sandbox
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3  # Make sure repo files are available
+        uses: actions/checkout@v4  # Make sure repo files are available
       - uses: ./actions/github-actions-integration-helper
         with:
           action: 'removeSandbox'

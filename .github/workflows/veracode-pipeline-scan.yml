@@ -72,7 +72,7 @@ jobs:
 
       # run the pipeline scan action
       - name: Checkout repository
-        uses: actions/checkout@v3  # Make sure repo files are available
+        uses: actions/checkout@v4  # Make sure repo files are available
       - name: Veracode Pipeline-Scan
         id: pipeline-scan
         uses: ./actions/Veracode-pipeline-scan-action
@@ -85,7 +85,7 @@ jobs:
           use_upgraded_version: true
 
       # - name: Checkout repository
-      #   uses: actions/checkout@v3  # Make sure repo files are available    
+      #   uses: actions/checkout@v4  # Make sure repo files are available    
       - name: Veracode Pipeline Results
         if: always()
         id: prepare-results
@@ -114,7 +114,7 @@ jobs:
           name: "Veracode Pipeline-Scan Mitigated Filtered Results"
 
       - name: Checkout repository
-        uses: actions/checkout@v3  # Make sure repo files are available
+        uses: actions/checkout@v4  # Make sure repo files are available
       - name: Convert pipeline scan output to SARIF format for java language
         if: ${{ inputs.language == 'Java' }}
         uses: ./actions/veracode-pipeline-scan-results-to-sarif
@@ -130,7 +130,7 @@ jobs:
           source-base-path-2: 'WEB-INF:src/main/webapp/WEB-INF'
 
       - name: Checkout repository
-        uses: actions/checkout@v3  # Make sure repo files are available
+        uses: actions/checkout@v4  # Make sure repo files are available
       - name: Convert pipeline scan output to SARIF format for non java language
         if: ${{ inputs.language != 'Java' }}
         uses: ./actions/veracode-pipeline-scan-results-to-sarif
@@ -155,7 +155,7 @@ jobs:
           name: 'Veracode Pipeline-Scan Mitigated Filtered Results'
 
       - name: Checkout repository
-        uses: actions/checkout@v3  # Make sure repo files are available
+        uses: actions/checkout@v4  # Make sure repo files are available
       - name: Create flaws as issues for java language
         if: ${{ inputs.language == 'Java' }}
         uses: ./actions/veracode-flaws-to-issues
@@ -169,7 +169,7 @@ jobs:
           source_base_path_2: 'WEB-INF:src/main/webapp/WEB-INF'
 
       - name: Checkout repository
-        uses: actions/checkout@v3  # Make sure repo files are available          
+        uses: actions/checkout@v4  # Make sure repo files are available          
       - name: Create flaws as issues for non java language
         if: ${{ inputs.language != 'Java' }}
         uses: ./actions/veracode-flaws-to-issues

@@ -29,7 +29,7 @@ jobs:
     name: Validations
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3 
+        uses: actions/checkout@v4 
       - name: Verify Veracode API credentials
         id: verify_api_creds
         uses: ./actions/github-actions-integration-helper
@@ -43,7 +43,7 @@ jobs:
           check_run_id: ${{ needs.register.outputs.run_id }}
 
       - name: Checkout repository
-        uses: actions/checkout@v3 
+        uses: actions/checkout@v4 
       - name: Verify Policy name
         id: verify_policy_name
         if: success()
@@ -75,7 +75,7 @@ jobs:
           run-id: ${{ github.event.client_payload.run_id }}
 
       - name: Checkout repository
-        uses: actions/checkout@v3 
+        uses: actions/checkout@v4 
       - name: Veracode Upload and Scan Action Step
         uses: ./actions/uploadandscan-action
         id: upload_and_scan
@@ -93,7 +93,7 @@ jobs:
           use_upgraded_version: true
 
       - name: Checkout repository
-        uses: actions/checkout@v3 
+        uses: actions/checkout@v4 
       - name: Veracode Policy Results
         id: prepare-results
         if: always()
@@ -123,7 +123,7 @@ jobs:
           path: /tmp
 
       - name: Checkout repository
-        uses: actions/checkout@v3 
+        uses: actions/checkout@v4 
       - name: Convert policy scan output to SARIF format for Java language
         if: ${{ github.event.client_payload.repository.language == 'Java' }}
         uses: ./actions/veracode-pipeline-scan-results-to-sarif
@@ -140,7 +140,7 @@ jobs:
           source-base-path-2: 'WEB-INF:src/main/webapp/WEB-INF'
 
       - name: Checkout repository
-        uses: actions/checkout@v3 
+        uses: actions/checkout@v4 
       - name: Convert policy scan output to SARIF format for non Java language
         if: ${{ github.event.client_payload.repository.language != 'Java' }}
         uses: ./actions/veracode-pipeline-scan-results-to-sarif
@@ -167,7 +167,7 @@ jobs:
           path: /tmp
 
       - name: Checkout repository
-        uses: actions/checkout@v3 
+        uses: actions/checkout@v4 
       - name: Create flaws as issues for Java language
         if: ${{ github.event.client_payload.repository.language == 'Java' }}
         uses: ./actions/veracode-flaws-to-issues
@@ -181,7 +181,7 @@ jobs:
           source_base_path_2: 'WEB-INF:src/main/webapp/WEB-INF'
 
       - name: Checkout repository
-        uses: actions/checkout@v3 
+        uses: actions/checkout@v4 
       - name: Create flaws as issues for non Java language
         if: ${{ github.event.client_payload.repository.language != 'Java' }}
         uses: ./actions/veracode-flaws-to-issues

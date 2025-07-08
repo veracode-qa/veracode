@@ -58,7 +58,7 @@ jobs:
     name: Validations
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3  # Make sure repo files are available
+        uses: actions/checkout@v4 # Make sure repo files are available
       - name: Verify Veracode API credentials
         id: verify_api_creds
         uses: ./actions/github-actions-integration-helper
@@ -72,7 +72,7 @@ jobs:
           check_run_id: ${{ needs.register.outputs.run_id }}
 
       - name: Checkout repository
-        uses: actions/checkout@v3       
+        uses: actions/checkout@v4       
       - name: Verify Policy name
         id: verify_policy_name
         if: success()
